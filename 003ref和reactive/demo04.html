@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../vue.esm-browser.js"></script>
+</head>
+<body>
+
+<div id="app">
+    {{number}}
+    <hr>
+    <a :href="web.url" target="_blank">{{web.title}}</a>
+</div>
+
+<script type="module">
+    import {createApp, reactive,ref} from '../vue.esm-browser.js'
+    createApp({
+        setup(){
+            const number=ref(10)
+            number.value=20
+
+            const web=reactive({
+                title:"百度搜索",
+                url:"http://www.baidu.com"
+            })
+
+            return {
+                msg: "success",
+                number: number,
+                web
+            }
+        }
+    }).mount("#app")
+
+</script>
+
+</body>
+</html>

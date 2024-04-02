@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../vue.esm-browser.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <button @click="sbdj">鼠标点击</button>
+    <button @keyup.enter="hc">回车</button>
+    <button @keyup.space="kg">空格</button>
+    <button @keydown.tab="tab">Tab</button>
+    <button @keyup.w="w">w</button>
+    <button @keyup.ctrl.enter="ctrlenter">ctrl+enter</button>
+    <button @keyup.ctrl.a="ctrla">ctrl+a</button>
+</div>
+
+<script type="module">
+    import {createApp} from '../vue.esm-browser.js'
+    createApp({
+        setup(){
+
+            const sbdj=()=>{
+                alert('鼠标点击')
+            }
+
+            const hc=()=>{
+                alert('回车')
+            }
+
+            const kg=()=>{
+                alert('空格')
+            }
+
+            const  tab=()=>{
+                alert('Tab')
+            }
+
+            const w=()=>{
+                alert('w')
+            }
+
+            const ctrlenter=()=>{
+                alert('ctrl+enter')
+            }
+
+            const ctrla=()=>{
+                alert('ctrl+a')
+            }
+
+
+            return {
+                sbdj,
+                hc,
+                kg,
+                tab,
+                w,
+                ctrlenter,
+                ctrla
+
+            }
+        }
+    }).mount("#app")
+
+</script>
+
+</body>
+</html>

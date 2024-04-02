@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../vue.global.js"></script>
+</head>
+<body>
+
+<div id="app">
+    {{msg}}
+    <hr>
+    <a :href="web.url" target="_blank">{{web.title}}</a>
+</div>
+
+<script>
+    Vue.createApp({
+        setup(){
+            const web=Vue.reactive({
+                title:"乏味的猫",
+                url:"http://www.baidu.com"
+            })
+
+            return {
+                msg: "success",
+                web
+            }
+        }
+    }).mount("#app")
+
+</script>
+
+</body>
+</html>
