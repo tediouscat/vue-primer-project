@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../vue.esm-browser.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <p v-show="web.show">需要显示的内容</p>
+    <button @click="toggle">点击切换</button>
+
+</div>
+
+<script type="module">
+    import {createApp, reactive} from '../vue.esm-browser.js'
+    createApp({
+        setup(){
+
+            const web=reactive({
+                show:true
+            })
+
+            const toggle=()=>{
+                web.show=!web.show
+            }
+
+            return {
+                web,
+                toggle
+            }
+        }
+    }).mount("#app")
+
+</script>
+
+</body>
+</html>

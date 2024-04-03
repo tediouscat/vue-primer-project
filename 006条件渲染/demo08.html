@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../vue.esm-browser.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <p v-show="web.show">需要显示的内容</p>
+    <button @click="toggle">点击切换</button>
+    <br>
+    <br>
+    <p v-if="web.user < 1000">新网站</p>
+    <p v-else-if="web.user >=1000 && web.user < 10000">优秀网站</p>
+    <p v-else-if="web.user >=10000 && web.user < 100000">优秀网站</p>
+    <p v-else>超级网站</p>
+    <button @click="web.user=web.user+500">点击加500</button>
+
+
+</div>
+
+<script type="module">
+    import {createApp, reactive} from '../vue.esm-browser.js'
+    createApp({
+        setup(){
+
+            const web=reactive({
+                show:true,
+                user:500
+            })
+
+            const toggle=()=>{
+                web.show=!web.show
+            }
+
+            return {
+                web,
+                toggle
+            }
+        }
+    }).mount("#app")
+
+</script>
+
+</body>
+</html>
