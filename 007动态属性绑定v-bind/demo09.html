@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .textColor {
+            color: blue;
+        }
+    </style>
+    <script src="../vue.esm-browser.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <h3>value=www.baidu.com</h3>
+    <input type="text" value="www.baidu.com"/>
+    <hr>
+    <h3>v-bind:value="web.url" 其中,web.url=www.baidu.com</h3>
+    <input type="text" v-bind:value="web.url"/>
+    <hr>
+    <h3>:value="web.url"</h3>
+    <input type="text" :value="web.url"/>
+    <hr>
+    <h3>src=windows.jpg</h3>
+    <img src="windows.jpg" width="30%" height="30%"/>
+    <hr>
+    <h3>v-bind:src="web.img" 其中,web.img=windows.jpg</h3>
+    <img v-bind:src="web.img" width="30%" height="30%"/>
+    <h3>class</h3>
+    <b class="textColor">威优易</b>
+    <h3>:class={textColor:web.fontStatus}</h3>
+    <b :class="{textColor:web.fontStatus}">威优易</b>
+
+
+</div>
+
+<script type="module">
+    import {createApp, reactive} from '../vue.esm-browser.js'
+    createApp({
+        setup(){
+
+            const web=reactive({
+                url:"www.baidu.com",
+                img:"windows.jpg",
+                fontStatus:true
+            })
+
+            return {
+                web
+            }
+        }
+    }).mount("#app")
+
+</script>
+
+</body>
+</html>
