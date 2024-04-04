@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+<div id="app">
+    <input type="text" v-model="data.content">
+
+    <button @click="add">添加</button> <hr>
+
+    <ul>
+        <li v-for="(value, index) in data.list">
+            {{ value }} <button @click="del(index)">删除</button>
+        </li>
+    </ul>
+
+    记录数 {{ data.list.length }} <br>
+
+    <button @click="clear">清空</button>
+</div>
+
+<script type="module">
+    import { createApp, reactive } from '../vue.esm-browser.js'
+
+    createApp({
+        setup() {
+            const data = reactive({
+                content: "",
+                list: ["邓瑞编程", "dengruicode.com"],
+            })
+
+            //添加
+            const add = () => {
+                if (data.content == "") {
+                    alert("请填写内容")
+                    return
+                }
+
+                data.list.push(data.content) //push 向数组末尾添加一个或多个元素
+                data.content = "" //清空文本框
+            }
+
+            //删除
+            const del = (index) => {
+                data.list.splice(index, 1) //splice(要删除元素的索引位置, 要删除的元素数量)
+            }
+
+            //清空
+            const clear = () => {
+                data.list = []
+            }
+
+            return {
+                data,
+                add,
+                del,
+                clear
+            }
+        }
+    }).mount("#app")
+</script>
+</body>
+
+</html>
